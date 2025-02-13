@@ -41,7 +41,7 @@ pipeline {
         stage('Checking the app') {
             steps {
                 echo 'Testing the web app'
-                sh 'wget http://localhost:9001'
+                //sh 'wget http://localhost:9001'
                 // no tengo instalado wget, pero tampoco sirve demasiado
             }
         }       
