@@ -29,7 +29,7 @@ pipeline {
         stage('Create the Apache httpd container') {
             steps {
             echo 'Creating the container...'
-            sh 'docker run -dit --name apache1 -p 9001:80  -v /var/jenkins_home/webLucas:/usr/local/apache2/htdocs/ httpd'
+            sh 'docker run -dit --name apache1 -p 9001:80  -v /home/lmcomerci/datos_jenkins/webLucas:/usr/local/apache2/htdocs/ httpd'
             }
         }
         stage('Copy the web application to the container directory') {
@@ -41,7 +41,7 @@ pipeline {
         stage('Checking the app') {
             steps {
                 echo 'Testing the web app'
-                //sh 'wget http://localhost:9000'
+                sh 'wget http://localhost:9001'
                 // no tengo instalado wget, pero tampoco sirve demasiado
             }
         }       
