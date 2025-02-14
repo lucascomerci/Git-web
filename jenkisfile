@@ -50,11 +50,11 @@ pipeline {
     post {
       success {
         echo 'El deployment ha funcionado correctamente.'
-        slackSend color: "good", message: "✅ El deployment ha sido exitoso. Autor: ${userInput.AUTHOR}, Entorno: ${userInput.ENVIRONMENT}"
+        slackSend color: "good", message: "✅ El deployment ha sido exitoso."
       }
       failure {
          echo 'Se ha producido un error.'
-         slackSend color: "danger", message: "❌ El deployment ha fallado. Autor: ${userInput.AUTHOR}, Entorno: ${userInput.ENVIRONMENT}. Revisa los logs para más detalles."
+         slackSend color: "danger", message: "❌ El deployment ha fallado. Revisa los logs para más detalles."
 
       }
     }
