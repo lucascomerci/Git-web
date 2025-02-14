@@ -43,8 +43,20 @@ pipeline {
                 echo 'Testing the web app'
                 //sh 'wget http://localhost:9001'
                 // no tengo instalado wget, pero tampoco sirve demasiado
-                slackSend color: "good", message: "Mensaje de prueba enviado desde un Pipeline"
+                //slackSend color: "good", message: "✅ Mensaje de prueba enviado desde un Pipeline"
             }
         }       
     }
+    post {
+      success {
+        echo 'El deployment ha funcionado correctamente'.
+        slackSend(color: "good", message: "✅ El deployment ha sido exitoso. Autor: ${userInput.AUTHOR}, Entorno: ${userInput.ENVIRONMENT}")
+      }
+      failure {
+         echo 'Se ha producido un error.'
+         slackSend(color: "danger", message: "❌ El deployment ha fallado. Autor: ${userInput.AUTHOR}, Entorno: ${userInput.ENVIRONMENT}. Revisa los logs para más detalles.")        
+
+      }
+    }
+
 }
