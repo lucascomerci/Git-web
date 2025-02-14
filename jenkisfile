@@ -49,7 +49,7 @@ pipeline {
     }
     post {
       success {
-        echo 'El deployment ha funcionado correctamente'.
+        echo 'El deployment ha funcionado correctamente.'
         slackSend(color: "good", message: "✅ El deployment ha sido exitoso. Autor: ${userInput.AUTHOR}, Entorno: ${userInput.ENVIRONMENT}")
       }
       failure {
