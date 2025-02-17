@@ -48,11 +48,17 @@ pipeline {
         }       
     }
     post {
-      success {
+      always { //siempre
+          echo "Eliminando WorkSpaces"
+          // lo que hagamos aca siempre se va a hacer indpenedientemente del estado del deploy
+          //por ejemplo puedo eminaar los wokspaces (caada builld me cre uno)
+          cleanWs()
+      }
+      success { // si sale bien
         echo 'El deployment ha funcionado correctamente.'
         slackSend color: "good", message: "✅ El deployment ha sido exitoso."
       }
-      failure {
+      failure { //si sale mal
          echo 'Se ha producido un error.'
          slackSend color: "danger", message: "❌ El deployment ha fallado. Revisa los logs para más detalles."
 
